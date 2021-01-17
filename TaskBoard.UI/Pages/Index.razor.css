@@ -1,1 +1,18 @@
-﻿
+﻿/*.button-addtask {
+    border: 1px solid black;
+    border-radius: 4px;
+    width: 136px;
+    height: 34px;
+    padding: 0 10px;
+    padding-top: 4px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}*/
+
+.button-addtask {
+    margin-bottom: 10px;
+}
+
+.button-addtask > svg {
+    margin-right: 5px;
+}

@@ -28,6 +28,21 @@ namespace TaskBoard.Data
             }
         }
 
+        public async Task InsertTaskList(string name)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                
+                conn.InsertAsync(new TaskList
+                {
+                    Name = name
+                });
+
+                conn.Close();
+            }
+        }
+
         public async Task DeleteTaskList(int id)
         {
             using (var conn = new SqlConnection(_connectionString))

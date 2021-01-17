@@ -31,6 +31,14 @@ namespace TaskBoard.Api.Controllers
             return result;
         }
 
+        [HttpPost("{name}")]
+        public async Task Insert(string name)
+        {
+            await _taskListRepository.InsertTaskList(name);
+
+            _logger.LogInformation($"Inserted new tasklist with name: {name}");
+        }
+
         [HttpDelete("{id}")]
         public async Task Delete(int id)
         {
@@ -38,6 +46,5 @@ namespace TaskBoard.Api.Controllers
 
             _logger.LogInformation($"Deleted tasklist with id: {id}");
         }
-
     }
 }

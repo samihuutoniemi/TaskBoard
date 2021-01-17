@@ -9,10 +9,10 @@
 }
 else
 {
-    <div @onclick="AddTaskList"><i class="fas fa-plus-circle"></i>Add task list</div>
+    <button class="btn btn-primary button-addtask" @onclick="AddTaskList"><i class="fas fa-plus-circle"></i>Add task list</button>
 
     @foreach (var taskList in TaskLists)
     {
-        <TaskList TaskList="taskList"></TaskList>
+        <TaskList TaskList="taskList" RemoveTaskList="() => RemoveTaskList(taskList.TaskList.Id)"></TaskList>
     }
 }

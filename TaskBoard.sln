@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.30709.132
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskBoard.UI", "TaskBoard.UI\TaskBoard.UI.csproj", "{E721ACA8-4292-4DBC-81B8-99D3CD8F6D93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskBoard.Api", "TaskBoard.Api\TaskBoard.Api.csproj", "{12DF1A5E-5450-464F-B3F9-CD9473929387}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskBoard.Api", "TaskBoard.Api\TaskBoard.Api.csproj", "{12DF1A5E-5450-464F-B3F9-CD9473929387}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskBoard.Model", "TaskBoard.Model\TaskBoard.Model.csproj", "{D34639F8-DA7C-4D1C-ACDD-608C24C3D760}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskBoard.Model", "TaskBoard.Model\TaskBoard.Model.csproj", "{D34639F8-DA7C-4D1C-ACDD-608C24C3D760}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskBoard.Data", "TaskBoard.Data\TaskBoard.Data.csproj", "{42943315-817D-4D9B-B7E6-42BEDD7269A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskBoard.Data", "TaskBoard.Data\TaskBoard.Data.csproj", "{42943315-817D-4D9B-B7E6-42BEDD7269A0}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{6DB048DE-DA61-4815-9FFA-40A561B1F060}"
 EndProject

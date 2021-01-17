@@ -12,6 +12,9 @@ namespace TaskBoard.UI.Components
         [Parameter]
         public TaskListViewModel TaskList { get; set; }
 
+        [Parameter]
+        public EventCallback RemoveTaskList { get; set; }
+
         [Inject]
         public HttpClient HttpClient { get; set; }
 
@@ -31,7 +34,7 @@ namespace TaskBoard.UI.Components
         public async Task DeleteTaskList()
         {
             await HttpClient.DeleteAsync($"http://taskboard.api/TaskList/{TaskList.TaskList.Id}");
-            //TaskLists.RemoveAll(tl => tl.TaskList.Id == id);
+            RemoveTaskList.InvokeAsync();
         }
     }
 }

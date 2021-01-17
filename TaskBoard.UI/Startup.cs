@@ -1,3 +1,4 @@
+using Blazored.Modal;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +22,7 @@ namespace TaskBoard.UI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<HttpClient>();
+            services.AddBlazoredModal();
             services.AddRazorPages().AddJsonOptions(options =>
             {
                 options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
