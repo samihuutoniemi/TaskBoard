@@ -10,16 +10,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["TaskBoard/TaskBoard.csproj", "TaskBoard/"]
-RUN dotnet restore "TaskBoard/TaskBoard.csproj"
+COPY ["TaskBoard.UI/TaskBoard.UI.csproj", "TaskBoard.UI/"]
+RUN dotnet restore "TaskBoard.UI/TaskBoard.UI.csproj"
 COPY . .
-WORKDIR "/src/TaskBoard"
-RUN dotnet build "TaskBoard.csproj" -c Release -o /app/build
+WORKDIR "/src/TaskBoard.UI"
+RUN dotnet build "TaskBoard.UI.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "TaskBoard.csproj" -c Release -o /app/publish
+RUN dotnet publish "TaskBoard.UI.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "TaskBoard.dll"]
+ENTRYPOINT ["dotnet", "TaskBoard.UI.dll"]
