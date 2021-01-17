@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using TaskBoard.Data;
 using TaskBoard.Model;
 
@@ -29,5 +30,14 @@ namespace TaskBoard.Api.Controllers
 
             return result;
         }
+
+        [HttpDelete("{id}")]
+        public async Task Delete(int id)
+        {
+            await _taskListRepository.DeleteTaskList(id);
+
+            _logger.LogInformation($"Deleted tasklist with id: {id}");
+        }
+
     }
 }

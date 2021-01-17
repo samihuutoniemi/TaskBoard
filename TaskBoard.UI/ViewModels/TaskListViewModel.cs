@@ -7,5 +7,6 @@ namespace TaskBoard.UI.ViewModels
     {
         public TaskList TaskList { get; set; }
         public IEnumerable<TaskItem> Tasks { get; set; }
+        public bool IsExpanded { get; set; }
     }
 }

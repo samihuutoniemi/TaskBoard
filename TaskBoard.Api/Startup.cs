@@ -21,11 +21,7 @@ namespace TaskBoard.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<TaskListRepository>();
-
-            //services.AddHttpsRedirection(options =>
-            //{
-            //    options.HttpsPort = 443;
-            //});
+            services.AddSingleton<TaskItemRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -43,8 +39,6 @@ namespace TaskBoard.Api
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TaskBoard.Api v1"));
             }
-
-            //app.UseHttpsRedirection();
 
             app.UseRouting();
 

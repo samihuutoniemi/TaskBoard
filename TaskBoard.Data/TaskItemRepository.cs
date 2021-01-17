@@ -7,35 +7,24 @@ using TaskBoard.Model;
 
 namespace TaskBoard.Data
 {
-    public class TaskListRepository
+    public class TaskItemRepository
     {
         private readonly string _connectionString;
 
-        public TaskListRepository(IConfiguration configuration)
+        public TaskItemRepository(IConfiguration configuration)
         {
             _connectionString = configuration.GetConnectionString("TaskBoardDatabase");
         }
 
-        public IEnumerable<TaskList> GetTaskLists()
+        public IEnumerable<TaskItem> GetTaskItems(int taskListId)
         {
             using (var conn = new SqlConnection(_connectionString))
             {
                 conn.Open();
-                var list = conn.GetList<TaskList>();
+                var list = conn.GetList<TaskItem>($"where TaskListId = {taskListId}");
                 conn.Close();
 
                 return list;
-            }
-        }
-
-        public async Task DeleteTaskList(int id)
-        {
-            using (var conn = new SqlConnection(_connectionString))
-            {
-                conn.Open();
-                conn.DeleteListAsync<TaskItem>($"where TaskListId = {id}");
-                conn.Delete<TaskList>(id);
-                conn.Close();
             }
         }
     }

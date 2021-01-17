@@ -20,18 +20,39 @@ namespace TaskBoard.UI.Pages
         [Inject]
         public HttpClient HttpClient { get; set; }
 
-        public IEnumerable<TaskListViewModel> TaskLists { get; set; }
+        public List<TaskListViewModel> TaskLists { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
-            _apiEndpoint = Configuration.GetSection("ApiEndpoint").Value;
-
             var json = await HttpClient.GetStringAsync("http://taskboard.api/TaskList");
             var taskLists = JsonSerializer.Deserialize<IEnumerable<TaskList>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
-            TaskLists = taskLists.Select(tl => new TaskListViewModel { TaskList = tl });
+            TaskLists = taskLists.Select(tl => new TaskListViewModel { TaskList = tl }).ToList();
 
-            base.OnInitializedAsync();
+            await base.OnInitializedAsync();
+        }
+
+        public async Task AddTaskList()
+        {
+        }
+
+        public async Task DeleteTaskList(int id)
+        {
+            await HttpClient.DeleteAsync($"http://taskboard.api/TaskList/{id}");
+            TaskLists.RemoveAll(tl => tl.TaskList.Id == id);
+        }
+
+        public async Task ToggleTaskList(TaskListViewModel taskList)
+        {
+            if (!taskList.IsExpanded)
+            {
+                var json = await HttpClient.GetStringAsync($"http://taskboard.api/TaskItem/{taskList.TaskList.Id}");
+                var taskItems = JsonSerializer.Deserialize<IEnumerable<TaskItem>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+                taskList.Tasks = taskItems;
+            }
+
+            taskList.IsExpanded = !taskList.IsExpanded;
         }
     }
 }
