@@ -6,8 +6,15 @@
 </div>
 @if (TaskList.IsExpanded && TaskList.Tasks != null)
 {
-    @foreach (var taskItem in TaskList.Tasks)
+    @if (TaskList.Tasks != null && TaskList.Tasks.Any())
     {
-        <TaskItem TaskItem="taskItem"></TaskItem>
+        @foreach (var taskItem in TaskList.Tasks)
+        {
+            <TaskItem TaskItem="taskItem"></TaskItem>
+        }
+    }
+    else
+    {
+        <TaskItem TaskItem="null"></TaskItem>
     }
 }

@@ -16,12 +16,12 @@ namespace TaskBoard.Data
             _connectionString = configuration.GetConnectionString("TaskBoardDatabase");
         }
 
-        public IEnumerable<TaskItem> GetTaskItems(int taskListId)
+        public async Task<IEnumerable<TaskItem>> GetTaskItems(int taskListId)
         {
             using (var conn = new SqlConnection(_connectionString))
             {
                 conn.Open();
-                var list = conn.GetList<TaskItem>($"where TaskListId = {taskListId}");
+                var list = await conn.GetListAsync<TaskItem>($"where TaskListId = {taskListId}");
                 conn.Close();
 
                 return list;

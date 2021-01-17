@@ -16,12 +16,12 @@ namespace TaskBoard.Data
             _connectionString = configuration.GetConnectionString("TaskBoardDatabase");
         }
 
-        public IEnumerable<TaskList> GetTaskLists()
+        public async Task<IEnumerable<TaskList>> GetTaskLists()
         {
             using (var conn = new SqlConnection(_connectionString))
             {
                 conn.Open();
-                var list = conn.GetList<TaskList>();
+                var list = await conn.GetListAsync<TaskList>();
                 conn.Close();
 
                 return list;
@@ -33,8 +33,8 @@ namespace TaskBoard.Data
             using (var conn = new SqlConnection(_connectionString))
             {
                 conn.Open();
-                
-                conn.InsertAsync(new TaskList
+
+                await conn.InsertAsync(new TaskList
                 {
                     Name = name
                 });
@@ -48,8 +48,8 @@ namespace TaskBoard.Data
             using (var conn = new SqlConnection(_connectionString))
             {
                 conn.Open();
-                conn.DeleteListAsync<TaskItem>($"where TaskListId = {id}");
-                conn.Delete<TaskList>(id);
+                await conn.DeleteListAsync<TaskItem>($"where TaskListId = {id}");
+                await conn.DeleteAsync<TaskList>(id);
                 conn.Close();
             }
         }

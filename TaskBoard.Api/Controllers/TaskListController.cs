@@ -22,9 +22,9 @@ namespace TaskBoard.Api.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<TaskList> Get()
+        public async Task<IEnumerable<TaskList>> Get()
         {
-            var result = _taskListRepository.GetTaskLists();
+            var result = await _taskListRepository.GetTaskLists();
 
             _logger.LogInformation($"Returned {result.Count()} tasklists.");
 

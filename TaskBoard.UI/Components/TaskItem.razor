@@ -1,6 +1,6 @@
 ﻿@inherits TaskItemBase
 
 <div class="task-container">
-    <div class="task-name">@TaskItem.Name</div>
-    <div class="task-description">@TaskItem.Description</div>
+    <div class="task-name">@(TaskItem?.Name ?? "This list does not contain any tasks yet!")</div>
+    <div class="task-description">@(TaskItem?.Description ?? string.Empty)</div>
 </div>
