@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  taskboard.ui:
+    image: ${DOCKER_REGISTRY-}taskboardui
+    build:
+      context: .
+      dockerfile: TaskBoard.UI\Dockerfile
+
+  taskboard.api:
+    image: ${DOCKER_REGISTRY-}taskboardapi
+    build:
+      context: .
+      dockerfile: TaskBoard.Api\Dockerfile
+
