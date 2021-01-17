@@ -1,0 +1,13 @@
+﻿@inherits TaskListBase
+
+<div class="tasklist-container" @onclick="ToggleTaskList">
+    <div class="tasklist-button" @onclick="DeleteTaskList"><i class="far fa-trash-alt"></i></div>
+    <div>@TaskList.TaskList.Name</div>
+</div>
+@if (TaskList.IsExpanded && TaskList.Tasks != null)
+{
+    @foreach (var taskItem in TaskList.Tasks)
+    {
+        <TaskItem TaskItem="taskItem"></TaskItem>
+    }
+}

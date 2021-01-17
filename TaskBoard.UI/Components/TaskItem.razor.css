@@ -1,0 +1,12 @@
+﻿.task-container {
+    padding-left: 20px;
+    margin-bottom: 5px;
+}
+
+.task-name {
+    font-weight: bold;
+}
+
+.task-description {
+    font-size: 12px;
+}

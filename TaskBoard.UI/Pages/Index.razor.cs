@@ -36,23 +36,8 @@ namespace TaskBoard.UI.Pages
         {
         }
 
-        public async Task DeleteTaskList(int id)
-        {
-            await HttpClient.DeleteAsync($"http://taskboard.api/TaskList/{id}");
-            TaskLists.RemoveAll(tl => tl.TaskList.Id == id);
-        }
+        
 
-        public async Task ToggleTaskList(TaskListViewModel taskList)
-        {
-            if (!taskList.IsExpanded)
-            {
-                var json = await HttpClient.GetStringAsync($"http://taskboard.api/TaskItem/{taskList.TaskList.Id}");
-                var taskItems = JsonSerializer.Deserialize<IEnumerable<TaskItem>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
-                taskList.Tasks = taskItems;
-            }
-
-            taskList.IsExpanded = !taskList.IsExpanded;
-        }
+      
     }
 }

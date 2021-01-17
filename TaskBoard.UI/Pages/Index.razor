@@ -13,19 +13,6 @@ else
 
     @foreach (var taskList in TaskLists)
     {
-        <div class="tasklist-container" @onclick="() => ToggleTaskList(taskList)">
-            <div class="tasklist-button" @onclick="() => DeleteTaskList(taskList.TaskList.Id)"><i class="far fa-trash-alt"></i></div>
-            <div>@taskList.TaskList.Name</div>
-        </div>
-        @if (taskList.IsExpanded && taskList.Tasks != null)
-        {
-            @foreach (var taskItem in taskList.Tasks)
-            {
-                <div class="task-container">
-                    <div class="task-name">@taskItem.Name</div>
-                    <div class="task-description">@taskItem.Description</div>
-                </div>
-            }
-        }
+        <TaskList TaskList="taskList"></TaskList>
     }
 }
