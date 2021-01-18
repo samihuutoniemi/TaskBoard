@@ -15,10 +15,9 @@
     font-size: 12px;
 }
 
-.taskitem-delete-button {
+.taskitem-button {
     position: absolute;
     top: 4px;
-    right: 4px;
     width: 30px;
     height: 30px;
     border: 2px solid #46bb46;
@@ -27,4 +26,12 @@
     text-align: center;
     padding-top: 2px;
     cursor: pointer;
+}
+
+.delete-button {
+    right: 4px;
+}
+
+.edit-button {
+    right: 37px;
 }

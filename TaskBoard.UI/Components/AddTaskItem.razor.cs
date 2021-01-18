@@ -19,14 +19,29 @@ namespace TaskBoard.UI.Components
         [Parameter]
         public int TaskListId { get; set; }
 
+        [Parameter]
+        public Model.TaskItem TaskItem { get; set; }
+
         public string Name { get; set; }
         public string Description { get; set; }
+
+        protected override Task OnParametersSetAsync()
+        {
+            if (TaskItem != null)
+            {
+                Name = TaskItem.Name;
+                Description = TaskItem.Description;
+            }
+
+            return base.OnParametersSetAsync();
+        }
 
         public async Task Ok()
         {
             var content = new Model.TaskItem
             {
-                TaskListId = TaskListId,
+                Id = TaskItem?.Id ?? 0,
+                TaskListId = TaskItem?.TaskListId ?? TaskListId,
                 Name = Name,
                 Description = Description
             };

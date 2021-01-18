@@ -3,7 +3,8 @@
 <div class="task-container">
     @if (TaskItem != null)
     {
-        <div class="taskitem-delete-button" @onclick="DeleteTaskItem" @onclick:stopPropagation="true"><i class="far fa-trash-alt"></i></div>
+        <div class="taskitem-button edit-button" @onclick="EditTaskItem" @onclick:stopPropagation="true"><i class="far fa-edit"></i></div>
+        <div class="taskitem-button delete-button" @onclick="DeleteTaskItem" @onclick:stopPropagation="true"><i class="far fa-trash-alt"></i></div>
     }
     <div class="task-name">@(TaskItem?.Name ?? "This list does not contain any tasks yet!")</div>
     <div class="task-description">@(TaskItem?.Description ?? string.Empty)</div>

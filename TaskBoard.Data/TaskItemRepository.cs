@@ -28,18 +28,20 @@ namespace TaskBoard.Data
             }
         }
 
-        public async Task InsertTaskItem(int taskListId, string name, string description)
+        public async Task InsertOrEditTaskItem(TaskItem taskItem)
         {
             using (var conn = new SqlConnection(_connectionString))
             {
                 conn.Open();
 
-                await conn.InsertAsync(new TaskItem
+                if (taskItem.Id == 0)
                 {
-                    TaskListId = taskListId,
-                    Name = name,
-                    Description = description
-                });
+                    await conn.InsertAsync(taskItem);
+                }
+                else
+                {
+                    await conn.UpdateAsync(taskItem);
+                }
 
                 conn.Close();
             }

@@ -32,9 +32,9 @@ namespace TaskBoard.Api.Controllers
         }
 
         [HttpPost]
-        public async Task Insert([FromBody] TaskItem taskItem)
+        public async Task InsertOrEdit([FromBody] TaskItem taskItem)
         {
-            await _taskItemRepository.InsertTaskItem(taskItem.TaskListId, taskItem.Name, taskItem.Description);
+            await _taskItemRepository.InsertOrEditTaskItem(taskItem);
 
             _logger.LogInformation($"Inserted new taskitem with name: {taskItem.Name}");
         }
