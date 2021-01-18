@@ -13,6 +13,8 @@ else
 
     @foreach (var taskList in TaskLists)
     {
-        <TaskList TaskList="taskList" RemoveTaskList="() => RemoveTaskList(taskList.TaskList.Id)"></TaskList>
+        <CascadingValue Value="@this">
+            <TaskList TaskList="taskList" RemoveTaskList="() => RemoveTaskList(taskList.TaskList.Id)" @ref="TaskListRef"></TaskList>
+        </CascadingValue>
     }
 }

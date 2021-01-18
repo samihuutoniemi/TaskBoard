@@ -19,7 +19,7 @@ namespace TaskBoard.UI.Components
         public async Task Ok()
         {
             await HttpClient.PostAsync($"http://taskboard.api/TaskList/{Name}", null);
-            ModalInstance.CloseAsync(ModalResult.Ok(""));
+            await ModalInstance.CloseAsync(ModalResult.Ok(""));
         }
     }
 }

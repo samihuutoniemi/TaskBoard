@@ -14,8 +14,6 @@ namespace TaskBoard.UI.Pages
 {
     public class IndexBase : ComponentBase
     {
-        private string _apiEndpoint;
-
         [Inject]
         public IConfiguration Configuration { get; set; }
 
@@ -27,10 +25,18 @@ namespace TaskBoard.UI.Pages
 
         public List<TaskListViewModel> TaskLists { get; set; }
 
+        public List<(int id, Components.TaskList taskList)> TaskListComponents { get; set; } = new List<(int id, Components.TaskList taskList)>();
+        public Components.TaskList TaskListRef 
+        {
+            set
+            {
+                TaskListComponents.Add((value.TaskList.TaskList.Id, value));
+            }
+        }
+
         protected override async Task OnInitializedAsync()
         {
             await GetTaskLists();
-
             await base.OnInitializedAsync();
         }
 

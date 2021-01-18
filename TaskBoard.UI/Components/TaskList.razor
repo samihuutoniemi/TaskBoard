@@ -11,7 +11,7 @@
     {
         @foreach (var taskItem in TaskList.Tasks)
         {
-            <TaskItem TaskItem="taskItem" RemoveTaskItem="GetTaskItems"></TaskItem>
+            <TaskItem TaskItem="taskItem" RefreshTaskList="GetTaskItems"></TaskItem>
         }
     }
     else

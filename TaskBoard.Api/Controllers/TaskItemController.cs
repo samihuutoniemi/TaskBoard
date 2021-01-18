@@ -31,13 +31,22 @@ namespace TaskBoard.Api.Controllers
             return result;
         }
 
-        [HttpPost]
+        [HttpPost("InsertOrEdit")]
         public async Task InsertOrEdit([FromBody] TaskItem taskItem)
         {
             await _taskItemRepository.InsertOrEditTaskItem(taskItem);
 
             _logger.LogInformation($"Inserted new taskitem with name: {taskItem.Name}");
         }
+
+        [HttpPost("Transfer/{id}/{newTaskListId}")]
+        public async Task Transfer(int id, int newTaskListId)
+        {
+            await _taskItemRepository.TransferTaskItem(id, newTaskListId);
+
+            _logger.LogInformation($"Transfered taskitem with id: {id} to list with id: {newTaskListId}");
+        }
+
 
         [HttpDelete("{id}")]
         public async Task Delete(int id)

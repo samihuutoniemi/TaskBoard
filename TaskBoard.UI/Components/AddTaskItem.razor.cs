@@ -48,9 +48,9 @@ namespace TaskBoard.UI.Components
 
             var json = JsonSerializer.Serialize(content);
 
-            await HttpClient.PostAsync($"http://taskboard.api/TaskItem", new StringContent(json, Encoding.UTF8, "application/json"));
+            await HttpClient.PostAsync($"http://taskboard.api/TaskItem/InsertOrEdit", new StringContent(json, Encoding.UTF8, "application/json"));
 
-            ModalInstance.CloseAsync(ModalResult.Ok(""));
+            await ModalInstance.CloseAsync(ModalResult.Ok(""));
         }
     }
 }

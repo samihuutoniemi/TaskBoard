@@ -1,0 +1,14 @@
+﻿@inherits TransferTaskItemBase
+
+<label>Transfer to list:</label>
+<select @bind="SelectedTaskListId" class="form-control">
+    @if (TaskLists != null)
+    {
+        @foreach (var taskList in TaskLists)
+        {
+            <option value="@taskList.Id">@taskList.Name</option>
+        }
+    }
+</select>
+
+<button @onclick="Ok" class="btn btn-primary">OK</button>

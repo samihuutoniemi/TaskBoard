@@ -47,6 +47,18 @@ namespace TaskBoard.Data
             }
         }
 
+        public async Task TransferTaskItem(int id, int newTaskListId)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                var taskItem = await conn.GetAsync<TaskItem>(id);
+                taskItem.TaskListId = newTaskListId;
+                await conn.UpdateAsync(taskItem);
+                conn.Close();
+            }
+        }
+
         public async Task DeleteTaskItem(int id)
         {
             using (var conn = new SqlConnection(_connectionString))

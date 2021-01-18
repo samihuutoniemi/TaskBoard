@@ -33,10 +33,16 @@ namespace TaskBoard.UI.Components
             TaskList.IsExpanded = !TaskList.IsExpanded;
         }
 
+        public void OpenTaskList()
+        {
+            TaskList.IsExpanded = true;
+            StateHasChanged();
+        }
+
         public async Task DeleteTaskList()
         {
             await HttpClient.DeleteAsync($"http://taskboard.api/TaskList/{TaskList.TaskList.Id}");
-            RemoveTaskList.InvokeAsync();
+            await RemoveTaskList.InvokeAsync();
         }
 
         public async Task AddTaskItem()

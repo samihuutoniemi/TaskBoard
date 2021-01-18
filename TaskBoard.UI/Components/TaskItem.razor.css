@@ -4,11 +4,13 @@
     padding-right: 40px;
     margin-bottom: 5px;
     background-color: #eee;
+    border: 1px solid #ccc;
     border-radius: 3px;
 }
 
 .task-name {
     font-weight: bold;
+    height: 38px;
 }
 
 .task-description {
@@ -34,4 +36,8 @@
 
 .edit-button {
     right: 37px;
+}
+
+.transfer-button {
+    right: 70px;
 }
