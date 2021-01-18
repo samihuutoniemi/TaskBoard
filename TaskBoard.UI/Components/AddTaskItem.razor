@@ -1,0 +1,9 @@
+﻿@inherits AddTaskItemBase
+
+<label>Name:</label>
+<input type="text" @bind="Name" class="form-control"></input>
+
+<label>Description:</label>
+<input type="text" @bind="Description" class="form-control"></input>
+
+<button @onclick="Ok" class="btn btn-primary">OK</button>

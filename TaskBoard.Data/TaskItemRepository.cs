@@ -27,5 +27,32 @@ namespace TaskBoard.Data
                 return list;
             }
         }
+
+        public async Task InsertTaskItem(int taskListId, string name, string description)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+
+                await conn.InsertAsync(new TaskItem
+                {
+                    TaskListId = taskListId,
+                    Name = name,
+                    Description = description
+                });
+
+                conn.Close();
+            }
+        }
+
+        public async Task DeleteTaskItem(int id)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                conn.Open();
+                await conn.DeleteAsync<TaskItem>(id);
+                conn.Close();
+            }
+        }
     }
 }

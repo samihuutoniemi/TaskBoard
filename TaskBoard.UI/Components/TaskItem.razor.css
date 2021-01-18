@@ -1,6 +1,10 @@
 ﻿.task-container {
-    padding-left: 20px;
+    position: relative;
+    padding-left: 10px;
+    padding-right: 40px;
     margin-bottom: 5px;
+    background-color: #eee;
+    border-radius: 3px;
 }
 
 .task-name {
@@ -9,4 +13,18 @@
 
 .task-description {
     font-size: 12px;
+}
+
+.taskitem-delete-button {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #46bb46;
+    border-radius: 15px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 2px;
+    cursor: pointer;
 }

@@ -1,7 +1,8 @@
 ﻿@inherits TaskListBase
 
 <div class="tasklist-container" @onclick="ToggleTaskList">
-    <div class="tasklist-button" @onclick="DeleteTaskList"><i class="far fa-trash-alt"></i></div>
+    <div class="tasklist-button" @onclick="DeleteTaskList" @onclick:stopPropagation="true"><i class="far fa-trash-alt"></i></div>
+    <div class="tasklist-button" @onclick="AddTaskItem" @onclick:stopPropagation="true"><i class="fas fa-plus-circle"></i></div>
     <div>@TaskList.TaskList.Name</div>
 </div>
 @if (TaskList.IsExpanded && TaskList.Tasks != null)
@@ -10,7 +11,7 @@
     {
         @foreach (var taskItem in TaskList.Tasks)
         {
-            <TaskItem TaskItem="taskItem"></TaskItem>
+            <TaskItem TaskItem="taskItem" RemoveTaskItem="GetTaskItems"></TaskItem>
         }
     }
     else

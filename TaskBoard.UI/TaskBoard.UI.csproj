@@ -16,4 +16,19 @@
     <ProjectReference Include="..\TaskBoard.Model\TaskBoard.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Components\AddTaskList - Copy - Copy.razor.cs">
+      <DependentUpon>AddTaskList - Copy.razor.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Components\AddTaskList - Copy.razor.cs">
+      <DependentUpon>AddTaskList.razor.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Components\AddTaskList - Copy.razor.css">
+      <DependentUpon>AddTaskList.razor.css</DependentUpon>
+    </None>
+  </ItemGroup>
+
 </Project>
