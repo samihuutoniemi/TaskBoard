@@ -36,7 +36,7 @@ namespace TaskBoard.Api.Controllers
         {
             await _taskItemRepository.InsertOrEditTaskItem(taskItem);
 
-            _logger.LogInformation($"Inserted new taskitem with name: {taskItem.Name}");
+            _logger.LogInformation($"Inserted or edited taskitem with name: {taskItem.Name}");
         }
 
         [HttpPost("Transfer/{id}/{newTaskListId}")]

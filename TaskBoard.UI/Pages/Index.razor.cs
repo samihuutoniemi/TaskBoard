@@ -6,7 +6,6 @@ using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-using TaskBoard.Model;
 using TaskBoard.UI.Components;
 using TaskBoard.UI.ViewModels;
 
