@@ -6,10 +6,30 @@ services:
     build:
       context: .
       dockerfile: TaskBoard.UI\Dockerfile
+    networks:
+      - taskboardnet
 
   taskboard.api:
     image: ${DOCKER_REGISTRY-}taskboardapi
     build:
       context: .
       dockerfile: TaskBoard.Api\Dockerfile
+    container_name: "taskboard.api"
+    networks:
+      - taskboardnet
 
+  sql-server:
+    image: microsoft/mssql-server-windows-developer  
+    ports:
+      - "15123:1433"
+    container_name: "sqlserver"
+    hostname: "sqlserver"
+    networks:
+      - taskboardnet
+    environment:
+      SA_PASSWORD: "taskboard-sql-password1"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+
+networks:
+  taskboardnet:
