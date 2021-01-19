@@ -2,6 +2,7 @@
 using Blazored.Modal.Services;
 using Microsoft.AspNetCore.Components;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -27,6 +28,7 @@ namespace TaskBoard.UI.Components
         {
             var json = await HttpClient.GetStringAsync("http://taskboard.api/TaskList");
             TaskLists = JsonSerializer.Deserialize<IEnumerable<Model.TaskList>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            SelectedTaskListId = TaskLists.First().Id;
 
             await base.OnInitializedAsync();
         }

@@ -20,18 +20,11 @@ namespace TaskBoard.Data
         {
             using (var conn = new SqlConnection(_connectionString))
             {
-                try
-                {
-                    conn.Open();
-                    var list = await conn.GetListAsync<TaskList>();
-                    conn.Close();
+                conn.Open();
+                var list = await conn.GetListAsync<TaskList>();
+                conn.Close();
 
-                    return list;
-                }
-                catch
-                {
-                    return null;
-                }
+                return list;
             }
         }
 
